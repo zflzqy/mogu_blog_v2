@@ -5,6 +5,7 @@ import com.moxi.mogublog.spider.mapper.BlogSpiderMapper;
 import com.moxi.mogublog.spider.util.IdWorker;
 import com.moxi.mougblog.base.enums.EPublish;
 import com.moxi.mougblog.base.enums.EStatus;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -19,6 +20,7 @@ import us.codecraft.webmagic.pipeline.Pipeline;
  * @date 2021年1月8日16:40:07
  */
 @Component
+@Slf4j
 public class BlogPipeline implements Pipeline {
 
 
@@ -33,8 +35,8 @@ public class BlogPipeline implements Pipeline {
         //获取title和content
         String title = res.get("title");
         String content = res.get("content");
-        System.out.println("title: " + title);
-        System.out.println("content: " + content);
+        log.info("title: {}",title);
+        log.info("content: {}",content);
         if (!StringUtils.isEmpty(title) && !StringUtils.isEmpty(content)) {
 
             try {
@@ -60,7 +62,7 @@ public class BlogPipeline implements Pipeline {
                 //DownloadUtil.download("http://pic.netbian.com"+fileUrl,fileName,SAVE_PATH);
 
             } catch (Exception e) {
-                e.printStackTrace();
+                log.error(e.getMessage());
             }
         }
 

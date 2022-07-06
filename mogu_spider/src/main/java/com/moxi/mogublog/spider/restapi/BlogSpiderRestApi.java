@@ -34,7 +34,7 @@ public class BlogSpiderRestApi {
     private Spider spider;
 
     /**
-     * 爬取csdn博客
+     * 启动爬取csdn博客
      *
      * @return
      */
@@ -59,7 +59,7 @@ public class BlogSpiderRestApi {
     }
 
     /**
-     * 爬取csdn博客
+     * 停止爬取csdn博客
      *
      * @return
      */

@@ -105,7 +105,7 @@ public class PictureProcesser implements PageProcessor {
         String html = pictureProcesser.getHtml("https://www.hippopx.com/zh/query?q=cat");
         List<String> imageUrl = pictureProcesser.getImageUrl(html);
         List<String> imageSrc = pictureProcesser.getImageSrc(imageUrl);
-        System.out.println(JSON.toJSONString(imageSrc));
+        log.info("获取到的图片地址：{}",JSON.toJSONString(imageSrc));
     }
 
     //获取ImageSrc地址
@@ -180,7 +180,6 @@ public class PictureProcesser implements PageProcessor {
 
         } catch (Exception e) {
             log.error("获取图片出现异常:{}", e.getMessage());
-            e.printStackTrace();
         } finally {
             //关闭各种流，先声明的后关闭
             try {
@@ -195,7 +194,6 @@ public class PictureProcesser implements PageProcessor {
                 }
             } catch (IOException e) {
                 log.error("获取图片出现异常:{}", e.getMessage());
-                e.printStackTrace();
             }
         }
         return sb.toString();

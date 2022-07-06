@@ -114,28 +114,29 @@ insert  into `t_blog_sort`(`uid`,`sort_name`,`content`,`create_time`,`update_tim
 
 DROP TABLE IF EXISTS `t_blog_spider`;
 
-CREATE TABLE `t_blog_spider` (
-  `uid` varchar(32) NOT NULL COMMENT '唯一uid',
-  `title` varchar(200) DEFAULT NULL COMMENT '博客标题',
-  `summary` varchar(200) DEFAULT NULL COMMENT '博客简介',
-  `content` longtext COMMENT '博客内容',
-  `tag_uid` varchar(255) DEFAULT NULL COMMENT '标签uid',
-  `click_count` int(11) DEFAULT '0' COMMENT '博客点击数',
-  `collect_count` int(11) DEFAULT '0' COMMENT '博客收藏数',
-  `file_uid` varchar(255) DEFAULT NULL COMMENT '标题图片uid',
-  `status` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '状态',
-  `create_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '创建时间',
-  `update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '更新时间',
-  `admin_uid` varchar(32) DEFAULT NULL COMMENT '管理员uid',
-  `is_original` varchar(1) DEFAULT '1' COMMENT '是否原创（0:不是 1：是）',
-  `author` varchar(255) DEFAULT NULL COMMENT '作者',
-  `articles_part` varchar(255) DEFAULT NULL COMMENT '文章出处',
-  `blog_sort_uid` varchar(32) DEFAULT NULL COMMENT '博客分类UID',
-  `level` tinyint(1) DEFAULT '0' COMMENT '推荐等级(0:正常)',
-  `is_publish` varchar(1) DEFAULT '1' COMMENT '是否发布：0：否，1：是',
-  `sort` int(11) NOT NULL DEFAULT '0' COMMENT '排序字段',
-  PRIMARY KEY (`uid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='博客爬取表';
+CREATE TABLE `t_blog_spider`  (
+  `uid` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '唯一uid',
+  `title` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '博客标题',
+  `summary` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '博客简介',
+  `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '博客内容',
+  `tag_uid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '标签uid',
+  `click_count` int(11) NULL DEFAULT 0 COMMENT '博客点击数',
+  `collect_count` int(11) NULL DEFAULT 0 COMMENT '博客收藏数',
+  `file_uid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '标题图片uid',
+  `status` tinyint(1) UNSIGNED NOT NULL DEFAULT 1 COMMENT '状态',
+  `create_time` timestamp(0) NOT NULL DEFAULT '1971-01-01 00:00:01' COMMENT '创建时间',
+  `update_time` timestamp(0) NOT NULL DEFAULT '1971-01-01 00:00:01' COMMENT '更新时间',
+  `admin_uid` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '管理员uid',
+  `is_original` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '1' COMMENT '是否原创（0:不是 1：是）',
+  `author` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '作者',
+  `articles_part` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '文章出处',
+  `blog_sort_uid` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '博客分类UID',
+  `level` tinyint(1) NULL DEFAULT 0 COMMENT '推荐等级(0:正常)',
+  `is_publish` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '1' COMMENT '是否发布：0：否，1：是',
+  `sort` int(11) NOT NULL DEFAULT 0 COMMENT '排序字段',
+  PRIMARY KEY (`uid`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '博客爬取表' ROW_FORMAT = Dynamic;
+
 
 /*Data for the table `t_blog_spider` */
 
